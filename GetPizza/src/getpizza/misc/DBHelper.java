@@ -1,17 +1,20 @@
 package getpizza.misc;
 
 import java.util.List;
+import java.util.Map;
 import java.sql.*;
 import getpizza.model.*;
 
 public class DBHelper {
+	static DBHelper instance = null;
+	
 	static String bd = "cliente";
 	static String login = "XYZ";
 	static String password = "ABC";
 	static String url = "jdbc:mysql://localhost/" + bd;
 	Connection connection = null;
 
-	public DBHelper() {
+	private DBHelper() {
 		try {
 			// String url = " jdbc : mysql :// hostname / database - name ";
 			connection = DriverManager.getConnection(url, login, password);
@@ -23,6 +26,13 @@ public class DBHelper {
 			System.out.println(" VendorError : " + ex.getErrorCode());
 		}
 	}
+	
+	public static DBHelper getInstance() {
+		if(instance == null)
+			instance = new DBHelper();
+		
+		return instance;
+	}
 
 	public Connection getConnection() {
 		return connection;
@@ -32,20 +42,20 @@ public class DBHelper {
 		connection = null;
 	}
 
-	public static void createClient(Cliente cliente) {
+	public void createClient(Map<String, String> datos) {
 
 	}
 
-	public static Cliente getClient(String username, String password) {
+	public Cliente getClient(String username, String password) {
 
 		return null;
 	}
 
-	public static void sendOrder(Cliente cliente) {
+	public void sendOrder(Cliente cliente) {
 
 	}
 
-	public static <T> List<T> getCodigoDescuento() {
+	public <T> List<T> getCodigoDescuento() {
 
 		return null;
 	}
