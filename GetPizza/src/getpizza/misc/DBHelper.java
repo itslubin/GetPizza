@@ -1,7 +1,9 @@
 package getpizza.misc;
 
 import java.util.List;
-import java.util.Map;
+
+import com.google.gson.Gson;
+
 import java.sql.*;
 import getpizza.model.*;
 
@@ -9,9 +11,9 @@ public class DBHelper {
 	static DBHelper instance = null;
 	
 	static String bd = "cliente";
-	static String login = "XYZ";
-	static String password = "ABC";
-	static String url = "jdbc:mysql://localhost/" + bd;
+	static String login = "root";
+	static String password = "lfearivsbdn";
+	static String url = "jdbc:mysql://sql.zcoding.cc/";
 	Connection connection = null;
 
 	private DBHelper() {
@@ -42,12 +44,21 @@ public class DBHelper {
 		connection = null;
 	}
 
-	public void createClient(Map<String, String> datos) {
-
+	public void createClient(Cliente cliente) {
+		String data = new Gson().toJson(cliente);
+		// TODO
 	}
 
 	public Cliente getClient(String username, String password) {
-
+		String data = "";
+		// TODO
+		try {
+			Cliente cliente = new Gson().fromJson(data, Cliente.class);
+			if(cliente.password.equals(password))
+				return cliente;
+		}catch(Exception e) {
+			Utils.showErrorMsg("DB Error");
+		}
 		return null;
 	}
 
@@ -60,4 +71,8 @@ public class DBHelper {
 		return null;
 	}
 
+	public static void main(String[] arg) {
+		//DBHelper.getInstance();
+		System.out.println(DBHelper.getInstance().toString());
+	}
 }
