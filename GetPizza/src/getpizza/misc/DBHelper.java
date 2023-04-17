@@ -1,62 +1,63 @@
 package getpizza.misc;
 
-import java.util.List;
-import java.util.Map;
-import java.sql.*;
+import com.google.gson.Gson;
 import getpizza.model.*;
+import redis.clients.jedis.Jedis;
 
 public class DBHelper {
 	static DBHelper instance = null;
-	
-	static String bd = "cliente";
-	static String login = "XYZ";
-	static String password = "ABC";
-	static String url = "jdbc:mysql://localhost/" + bd;
-	Connection connection = null;
+	Jedis jedis = null;
 
 	private DBHelper() {
 		try {
-			// String url = " jdbc : mysql :// hostname / database - name ";
-			connection = DriverManager.getConnection(url, login, password);
-		} catch (SQLException ex) {
-			connection = null;
+			jedis = new Jedis("zithuang.top", 6379);
+			jedis.auth("lfearivsbdn");
+		} catch (Exception ex) {
+			jedis = null;
 			ex.printStackTrace();
-			System.out.println(" SQLException : " + ex.getMessage());
-			System.out.println(" SQLState : " + ex.getSQLState());
-			System.out.println(" VendorError : " + ex.getErrorCode());
 		}
 	}
-	
+
 	public static DBHelper getInstance() {
-		if(instance == null)
+		if (instance == null)
 			instance = new DBHelper();
-		
+
 		return instance;
 	}
 
-	public Connection getConnection() {
-		return connection;
+	public Jedis getConnection() {
+		return jedis;
 	}
 
 	public void desconectar() {
-		connection = null;
+		jedis.close();
+	}
+	
+	public boolean exists(String username) {
+		return jedis.exists(username);
 	}
 
-	public void createClient(Map<String, String> datos) {
-
+	public void setClient(Cliente cliente) {
+		String data = new Gson().toJson(cliente);
+		jedis.set(cliente.getId(), data);
 	}
 
 	public Cliente getClient(String username, String password) {
-
-		return null;
-	}
-
-	public void sendOrder(Cliente cliente) {
-
-	}
-
-	public <T> List<T> getCodigoDescuento() {
-
+		if (jedis.exists(username)) {
+			String data = jedis.get(username);
+			try {
+				Cliente cliente = new Gson().fromJson(data, Cliente.class);
+				if (cliente.password.equals(password))
+					return cliente;
+				else
+					Utils.showErrorMsg("Contraseña incorrecta");
+			} catch (Exception e) {
+				Utils.showErrorMsg("DB Error");
+			}
+		}
+		else
+			Utils.showErrorMsg("Usuario no existe");
+		
 		return null;
 	}
 
