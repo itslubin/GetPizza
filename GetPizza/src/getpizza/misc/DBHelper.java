@@ -79,5 +79,7 @@ public class DBHelper {
 				"{\"postres\":[{\"nombre\":\"Tiramisú\",\"precio\":4.5,\"desc\":\"Postre italiano hecho con bizcochos de soletilla, café, queso mascarpone, huevos y cacao en polvo\",\"id\":\"tiramisu\"},{\"nombre\":\"Crème Brûlée\",\"precio\":5.0,\"desc\":\"Postre francés hecho con crema de leche, yema de huevo, azúcar y vainilla, cubierto con una capa de caramelo quemado\",\"id\":\"creme_brulee\"},{\"nombre\":\"Profiteroles\",\"precio\":4.0,\"desc\":\"Postre francés hecho con pasta choux rellena de crema pastelera y cubierta con chocolate derretido\",\"id\":\"profiteroles\"},{\"nombre\":\"Tarta de Chocolate\",\"precio\":4.5,\"desc\":\"Postre hecho con bizcocho de chocolate y una capa de chocolate fundido por encima\",\"id\":\"tarta_chocolate\"},{\"nombre\":\"Flan\",\"precio\":3.5,\"desc\":\"Postre hecho con huevo, leche, azúcar y caramelo líquido\",\"id\":\"flan\"}]}");
 		
 		System.out.println(jedis.ping());
+		
+		jedis.close();
 	}
 }
