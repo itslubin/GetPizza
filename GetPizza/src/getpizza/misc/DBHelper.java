@@ -1,5 +1,7 @@
 package getpizza.misc;
 
+import java.util.List;
+
 import com.google.gson.Gson;
 import getpizza.model.*;
 import redis.clients.jedis.Jedis;
@@ -61,6 +63,10 @@ public class DBHelper {
 		} else
 			Utils.showErrorMsg("Usuario no existe");
 
+		return null;
+	}
+	
+	public List<DescuentoPorCodigo> getCodigo(){
 		return null;
 	}
 
