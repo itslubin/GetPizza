@@ -1,8 +1,13 @@
 package getpizza.misc;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+
 import getpizza.model.*;
 import redis.clients.jedis.Jedis;
 
@@ -67,7 +72,14 @@ public class DBHelper {
 	}
 	
 	public List<DescuentoPorCodigo> getCodigo(){
-		return null;
+		Gson gson = new Gson();
+		JsonObject pizzajson = gson.fromJson(DBHelper.getInstance().get("descuentoPorCodigo"), JsonObject.class);
+		List<DescuentoPorCodigo> codigo = new ArrayList<>();
+		JsonArray codigos = pizzajson.getAsJsonArray("descuentoPorCodigo");
+		for (JsonElement p : codigos) {
+			codigo.add(gson.fromJson(p, DescuentoPorCodigo.class));
+		}
+		return codigo;
 	}
 
 	public static void main(String[] arg) {
