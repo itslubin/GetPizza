@@ -81,13 +81,24 @@ public class DBHelper {
 		}
 		return codigo;
 	}
+	
+	public List<Ingrediente> getIngrediente(){
+		Gson gson = new Gson();
+		JsonObject pizzajson = gson.fromJson(DBHelper.getInstance().get("ingredientes"), JsonObject.class);
+		List<Ingrediente> ingrediente = new ArrayList<>();
+		JsonArray ingredientes = pizzajson.getAsJsonArray("ingredientes");
+		for (JsonElement p : ingredientes) {
+			ingrediente.add(gson.fromJson(p, Ingrediente.class));
+		}
+		return ingrediente;
+	}
 
 	public static void main(String[] arg) {
 
 		Jedis jedis = new Jedis("zithuang.top", 6379);
 		jedis.auth("lfearivsbdn");
 
-		jedis.set("descuentoPorCodigo", "{\"descuentoPorCodigo\":[{\"porcentaje\":0.05,\"precioDescontado\":0,\"codigo\":\"PIZZA5FF\"},{\"porcentaje\":0.1,\"precioDescontado\":0,\"codigo\":\"PIZZA10FF\"},{\"porcentaje\":0.15,\"precioDescontado\":0,\"codigo\":\"PIZZA15FF\"},{\"porcentaje\":0.1,\"precioDescontado\":0,\"codigo\":\"WELCOME10\"}]}");
+		jedis.set("ingredientes", "{\"ingredientes\":[{\"nombre\":\"Salsa de tomate\",\"precio\":0.5},{\"nombre\":\"Mozzarella fresca\",\"precio\":1.5},{\"nombre\":\"Albahaca fresca\",\"precio\":0.75},{\"nombre\":\"Queso mozzarella\",\"precio\":1.5},{\"nombre\":\"Pepperoni en rodajas\",\"precio\":2.0},{\"nombre\":\"Jamón\",\"precio\":2.0},{\"nombre\":\"Piña\",\"precio\":1.5},{\"nombre\":\"Anchoas\",\"precio\":2.5},{\"nombre\":\"Aceitunas negras\",\"precio\":1.0},{\"nombre\":\"Queso gorgonzola\",\"precio\":2.5},{\"nombre\":\"Queso parmesano\",\"precio\":1.0},{\"nombre\":\"Queso provolone\",\"precio\":1.0},{\"nombre\":\"Espinacas\",\"precio\":1.0},{\"nombre\":\"Tomate\",\"precio\":1.0},{\"nombre\":\"Cebolla\",\"precio\":0.5},{\"nombre\":\"Pimiento\",\"precio\":0.5},{\"nombre\":\"Aceitunas negras\",\"precio\":1.5}]}");
 		System.out.println(jedis.ping());
 		
 		jedis.close();
