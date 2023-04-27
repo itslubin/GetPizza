@@ -44,11 +44,15 @@ public class SARegistry {
 					Map<String, String> datos = _reg.getInfo();
 					for(String str : datos.values()) {
 						if(str.equals(""))
-							throw new IllegalArgumentException();
+							throw new IllegalArgumentException("Los datos no pueden ser vacíos");
 					}
+					String user = datos.get("Usuario");
+					if(user.equals("pizzas") || user.equals("postres") || user.equals("bebidas") || user.equals("ingredientes"))
+						throw new IllegalArgumentException("Nombre de usuario no disponible");
+					
 					registry(datos);
 				} catch (Exception ex) {
-					Utils.showErrorMsg("Los datos no pueden ser vacio");
+					Utils.showErrorMsg(ex.getMessage());
 				}
 			}
 		};
