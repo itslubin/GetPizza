@@ -97,10 +97,36 @@ public class DBHelper {
 
 		Jedis jedis = new Jedis("zithuang.top", 6379);
 		jedis.auth("lfearivsbdn");
-
-		jedis.set("ingredientes", "{\"ingredientes\":[{\"nombre\":\"Salsa de tomate\",\"precio\":0.5},{\"nombre\":\"Mozzarella fresca\",\"precio\":1.5},{\"nombre\":\"Albahaca fresca\",\"precio\":0.75},{\"nombre\":\"Queso mozzarella\",\"precio\":1.5},{\"nombre\":\"Pepperoni en rodajas\",\"precio\":2.0},{\"nombre\":\"Jamón\",\"precio\":2.0},{\"nombre\":\"Piña\",\"precio\":1.5},{\"nombre\":\"Anchoas\",\"precio\":2.5},{\"nombre\":\"Aceitunas negras\",\"precio\":1.0},{\"nombre\":\"Queso gorgonzola\",\"precio\":2.5},{\"nombre\":\"Queso parmesano\",\"precio\":1.0},{\"nombre\":\"Queso provolone\",\"precio\":1.0},{\"nombre\":\"Espinacas\",\"precio\":1.0},{\"nombre\":\"Tomate\",\"precio\":1.0},{\"nombre\":\"Cebolla\",\"precio\":0.5},{\"nombre\":\"Pimiento\",\"precio\":0.5},{\"nombre\":\"Aceitunas negras\",\"precio\":1.5}]}");
+		
+//		jedis.set("bebidas", addProducto("{\"nombre\":\"Agua Mineral\",\"precio\":1.5,\"desc\":\"Agua Mineral sin gas\",\"id\":\"agua_mineral\",\"tamanyo\":\"Grande\"}", "bebidas"));
+		jedis.set("bebidas", removeProducto("agua_mineral", "bebidas"));
+		
 		System.out.println(jedis.ping());
 		
 		jedis.close();
 	}
+	
+	private static String removeProducto(String id, String tipo) {
+		Gson gson = new Gson();
+		JsonObject productos = gson.fromJson(DBHelper.getInstance().get(tipo), JsonObject.class);
+		JsonArray productArray = productos.getAsJsonArray(tipo);
+		for(int i = 0; i < productArray.size(); i++) {
+			if(productArray.get(i).getAsJsonObject().get("id").getAsString().equals(id)) {
+				productArray.remove(i);
+				break;
+			}
+		}
+
+		return gson.toJson(productos);
+	}
+	
+	private static String addProducto(String jsonobject, String tipo) {
+		Gson gson = new Gson();
+		JsonObject productos = gson.fromJson(DBHelper.getInstance().get(tipo), JsonObject.class);
+		JsonArray productArray = productos.getAsJsonArray(tipo);
+		productArray.add(gson.fromJson(jsonobject, JsonObject.class));
+		
+		return gson.toJson(productos);
+	}
+	
 }
