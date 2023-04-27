@@ -98,8 +98,13 @@ public class DBHelper {
 		Jedis jedis = new Jedis("zithuang.top", 6379);
 		jedis.auth("lfearivsbdn");
 		
-//		jedis.set("bebidas", addProducto("{\"nombre\":\"Agua Mineral\",\"precio\":1.5,\"desc\":\"Agua Mineral sin gas\",\"id\":\"agua_mineral\",\"tamanyo\":\"Grande\"}", "bebidas"));
-		jedis.set("bebidas", removeProducto("agua_mineral", "bebidas"));
+		// Para eliminar una pizza (pizza Margarita)
+//		jedis.set("pizzas", removeProducto("p1", "pizzas"));
+		
+		// Para añadir una nueva bebida (agua con gas)
+//		jedis.set("bebidas", addProducto("{\"nombre\":\"Agua con Gas\",\"precio\":1.8,\"desc\":\"Agua con gas\",\"id\":\"agua_con_gas\",\"tamanyo\":\"Grande\"}", "bebidas"));
+
+
 		
 		System.out.println(jedis.ping());
 		
