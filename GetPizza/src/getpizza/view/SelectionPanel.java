@@ -255,13 +255,13 @@ public class SelectionPanel extends JScrollPane {
 		base1.setSelected(true);
 		basegroup.add(base1);
 		JRadioButton base2 = new JRadioButton("Queso");
-		base1.setActionCommand("1");
+		base2.setActionCommand("1");
 		basegroup.add(base2);
 		JRadioButton base3 = new JRadioButton("Tomate");
-		base1.setActionCommand("2");
+		base3.setActionCommand("2");
 		basegroup.add(base3);
 		JRadioButton base4 = new JRadioButton("Queso y tomate");
-		base1.setActionCommand("3");
+		base4.setActionCommand("3");
 		basegroup.add(base4);
 
 		radioButtonBase.add(base);
