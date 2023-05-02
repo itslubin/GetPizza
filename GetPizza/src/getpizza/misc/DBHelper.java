@@ -2,6 +2,7 @@ package getpizza.misc;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
@@ -104,10 +105,19 @@ public class DBHelper {
 		// Para añadir una nueva bebida (agua con gas)
 //		jedis.set("bebidas", addProducto("{\"nombre\":\"Agua con Gas\",\"precio\":1.8,\"desc\":\"Agua con gas\",\"id\":\"agua_con_gas\",\"tamanyo\":\"Grande\"}", "bebidas"));
 
-
+		// Para consultar todos los datos de la base de datos
+		
+		// Obtiene todas las claves almacenadas en la base de datos
+//		Set<String> keys = jedis.keys("*");
+		
+		// Itera sobre las claves y muestra su valor
+//		for (String key : keys) {
+//			System.out.println("Clave: " + key + "Valor: " + jedis.get(key));
+//		}
 		
 		System.out.println(jedis.ping());
 		
+		// Cierra la conexion con la base de datos
 		jedis.close();
 	}
 	

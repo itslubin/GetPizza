@@ -1,4 +1,4 @@
-package getpizza.model;
+package getpizza.enums;
 
 import com.modeliosoft.modelio.javadesigner.annotations.objid;
 

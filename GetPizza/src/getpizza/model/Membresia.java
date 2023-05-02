@@ -2,6 +2,8 @@ package getpizza.model;
 
 import com.modeliosoft.modelio.javadesigner.annotations.objid;
 
+import getpizza.enums.Rango;
+
 @objid ("968f9124-0556-4d56-88bc-48fc80d7706e")
 public class Membresia {
     @objid ("dcf76d8c-0fde-42e7-b4c9-dc2a6041315f")

@@ -18,15 +18,15 @@ import com.google.gson.Gson;
 
 import getpizza.control.Controller;
 import getpizza.misc.DBHelper;
-import getpizza.model.Base;
+import getpizza.enums.Base;
 import getpizza.model.Bebida;
 import getpizza.model.Ingrediente;
-import getpizza.model.Masa;
+import getpizza.enums.Masa;
 import getpizza.model.Pizza;
 import getpizza.model.PizzaPersonalizada;
 import getpizza.model.Postre;
 import getpizza.model.Producto;
-import getpizza.model.Tamanyo;
+import getpizza.enums.Tamanyo;
 
 public class SelectionPanel extends JScrollPane {
 

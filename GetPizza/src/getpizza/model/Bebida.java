@@ -2,6 +2,8 @@ package getpizza.model;
 
 import com.modeliosoft.modelio.javadesigner.annotations.objid;
 
+import getpizza.enums.Tamanyo;
+
 @objid ("ab60c0e0-1b19-475d-9ae0-2ab0e1d6448a")
 public class Bebida extends Producto {
     @objid ("afa197c3-6966-47bd-b7c1-3d0b4b3b2a6d")

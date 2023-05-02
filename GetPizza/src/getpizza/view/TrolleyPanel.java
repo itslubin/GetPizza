@@ -88,10 +88,6 @@ public class TrolleyPanel extends JScrollPane implements Observer {
 	}
 
 	@Override
-	public void onCodeUsed(String codigo) {
-	}
-
-	@Override
 	public void onOrderSended(Pedido pedido) {
 	}
 	

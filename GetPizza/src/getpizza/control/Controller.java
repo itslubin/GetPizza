@@ -16,7 +16,7 @@ import getpizza.model.Pedido;
 import getpizza.model.Pizza;
 import getpizza.model.Postre;
 import getpizza.model.Producto;
-import getpizza.model.Rango;
+import getpizza.enums.Rango;
 import getpizza.view.*;
 
 public class Controller {

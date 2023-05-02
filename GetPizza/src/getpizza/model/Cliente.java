@@ -6,6 +6,8 @@ import java.util.Map;
 
 import com.modeliosoft.modelio.javadesigner.annotations.objid;
 
+import getpizza.enums.Rango;
+
 @objid ("214a8828-9881-416b-be6c-576eeb3c618c")
 public class Cliente {
     @objid ("9a29129c-4ce7-488a-a365-8b53e394d1bd")

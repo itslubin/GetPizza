@@ -97,10 +97,6 @@ public class Historial extends JScrollPane implements Observer {
 	}
 
 	@Override
-	public void onCodeUsed(String codigo) {
-	}
-
-	@Override
 	public void onOrderSended(Pedido pedido) {
 		contentPanel.add(createHitoriaPanel(pedido));
 		contentPanel.add(Box.createVerticalStrut(10));
