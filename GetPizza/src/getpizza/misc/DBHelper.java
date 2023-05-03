@@ -16,10 +16,11 @@ public class DBHelper {
 	static DBHelper instance = null;
 	Jedis jedis = null;
 
-	private DBHelper() {
+	DBHelper() {
 		try {
 			jedis = new Jedis("zithuang.top", 6379);
 			jedis.auth("lfearivsbdn");
+			
 		} catch (Exception ex) {
 			jedis = null;
 			ex.printStackTrace();
@@ -121,7 +122,7 @@ public class DBHelper {
 		jedis.close();
 	}
 	
-	private static String removeProducto(String id, String tipo) {
+	String removeProducto(String id, String tipo) {
 		Gson gson = new Gson();
 		JsonObject productos = gson.fromJson(DBHelper.getInstance().get(tipo), JsonObject.class);
 		JsonArray productArray = productos.getAsJsonArray(tipo);
@@ -135,7 +136,7 @@ public class DBHelper {
 		return gson.toJson(productos);
 	}
 	
-	private static String addProducto(String jsonobject, String tipo) {
+	String addProducto(String jsonobject, String tipo) {
 		Gson gson = new Gson();
 		JsonObject productos = gson.fromJson(DBHelper.getInstance().get(tipo), JsonObject.class);
 		JsonArray productArray = productos.getAsJsonArray(tipo);

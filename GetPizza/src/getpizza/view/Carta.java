@@ -40,6 +40,7 @@ public class Carta extends JScrollPane {
 		setViewportView(contentPanel);
 		getVerticalScrollBar().setBackground(new Color(255, 255, 255, 160));
 		setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		getVerticalScrollBar().setUnitIncrement(10);
 		setBounds(60, 50, 408, 390);
 		setOpaque(false);
 	}
