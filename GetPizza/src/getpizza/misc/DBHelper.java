@@ -16,7 +16,8 @@ public class DBHelper {
 	static DBHelper instance = null;
 	Jedis jedis = null;
 
-	DBHelper() {
+	private DBHelper() {
+		
 		try {
 			jedis = new Jedis("zithuang.top", 6379);
 			jedis.auth("lfearivsbdn");

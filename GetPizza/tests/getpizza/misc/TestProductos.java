@@ -15,7 +15,7 @@ class TestProductos {
 
 	@Test
 	void test() {
-		DBHelper DBHelper = new DBHelper();
+		DBHelper DBHelper = getpizza.misc.DBHelper.getInstance();
 
 		try {
 
