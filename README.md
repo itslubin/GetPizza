@@ -2,7 +2,8 @@
 Especificación de requisitos del software (SRS)
 
 1. Introducción
-  	Este documento es una Especificación de Requisitos Software (ERS) para el
+
+  Este documento es una Especificación de Requisitos Software (ERS) para el
   sistema GetPizza. Esta especificación se ha estructurado basándose en las
   directrices dadas por el estándar IEEE "Práctica Recomendada para
   Especificaciones de Requisitos Software IEEE 830, 1998".
@@ -10,7 +11,8 @@ Especificación de requisitos del software (SRS)
   
 
   1.1 Propósito
-  	Este proyecto tiene como objetivo crear una aplicación de escritorio con la cual
+
+  Este proyecto tiene como objetivo crear una aplicación de escritorio con la cual
   poder pedir comida a domicilio, con la facilidad de no tener que visitar la tienda
   físicamente. Esta aplicación va dirigida a un público con poca disponibilidad o tiempo
   libre limitado que busque poder comer de forma cómoda y rápida teniendo la
@@ -20,12 +22,14 @@ Especificación de requisitos del software (SRS)
   
 
   1.2 Alcance
-  	El presente documento pretende definir las especificaciones de un sistema de
+
+  El presente documento pretende definir las especificaciones de un sistema de
   información que gestiona por medio de credenciales inteligentes el acceso a
   visualizar menús, pedir comida a domicilio, acumular ofertas y conseguir un rango
   de membresía por medio de un sistema de puntos el cual será premiado por el
   sistema con descuentos.
-  	El sistema GetPizza se centra en la gestión de visualizar menús, pedidos de
+
+  El sistema GetPizza se centra en la gestión de visualizar menús, pedidos de
   comida a domicilio, acumulación de ofertas y el otorgamiento de un rango de
   membresía por medio de un sistema de puntos. El sistema está diseñado para ser
   utilizado por los clientes de la pizzería y se basa en el uso de credenciales
@@ -34,7 +38,8 @@ Especificación de requisitos del software (SRS)
   
 
   1.3 Visión general del documento
-  	Este documento quiere dar una descripción general sobre el sistema, el cual está
+
+  Este documento quiere dar una descripción general sobre el sistema, el cual está
   estructurado de acuerdo a las directrices proporcionadas por el estándar IEEE 830
   para Especificaciones de Requisitos Software. El documento contiene una
   descripción general del sistema, incluyendo la perspectiva del producto, las
@@ -48,14 +53,16 @@ Especificación de requisitos del software (SRS)
 2. Descripción general
 
   2.1 Perspectiva del producto
-  	GetPizza es un sistema orientado a la realización de pedidos de un restaurante
+
+  GetPizza es un sistema orientado a la realización de pedidos de un restaurante
   de pizzas, el cual consta de una aplicación para dispositivo móvil o de escritorio para la
   versión de ordenador de uso único para los clientes.
 
   
 
   2.2 Características de los usuarios
-  	El sistema GetPizza permite a los clientes gestionar sus pedidos de comida a
+
+  El sistema GetPizza permite a los clientes gestionar sus pedidos de comida a
   domicilio de forma eficiente. Los clientes comienzan el proceso iniciando sesión o
   registrándose en el sistema para acceder a una variedad de opciones, incluyendo la
   visualización de menús, la modificación de datos, la acumulación de ofertas o la
@@ -64,7 +71,8 @@ Especificación de requisitos del software (SRS)
   pregunta el método de pago, bien pudiendo elegir que el repartidor lleve un datáfono
   para poder realizar el pago por tarjeta; o sin datáfono, para pagar en efectivo cuando el
   repartidor lleve el pedido.
-  	Los casos de uso empleados para definir este proyecto son los siguientes en
+
+  Los casos de uso empleados para definir este proyecto son los siguientes en
   orden: 1) Registro en el sistema 2) Inicio de sesión 3) Modificación de datos 4) Visualizar
   carta 5) Visualizar membresía 6) Realizar pedido 7) Ver estado del pedido 8) Finalizar
   el pedido.
@@ -82,33 +90,48 @@ Especificación de requisitos del software (SRS)
 ​		
 
 ​		2.4 Entidades de datos principales
-​						⮚ Cliente (id, nombre completo, dirección, correo, password, teléfono,
-​							códigosUsados)
+
+​						⮚ Cliente (id, nombre completo, dirección, correo, password, teléfono, códigosUsados)
+
 ​						⮚ Pedido (id, precio, precioFinal, estado, conDatafono, nota)
+
 ​						⮚ Descuento (tipos de descuento: DescuentoPorDia, DescuentoPorPuntos,
 ​							DescuentoPorMembresia, DescuentoPorCodigo; atributos: precioDescontado)
+
 ​						⮚ Código (descuento)
+
 ​						⮚ Producto (tipos de producto: pizza, postre, bebida; atributos: nombre, precio)
+
 ​						⮚ MenúPredefinido (pizza, postre, bebida, tipo de menú: personalizado,
 ​							predeterminado)
+
 ​						⮚ Pizza (tipo de pizza: predeterminada, personalizada)
+
 ​						⮚ Ingredientes (disponibilidad, nombre)
+
 ​						⮚ Membresía (rango, puntos, puntosTotales)
+
 ​						⮚ Carrito (precioTotal)
 
 ​		2.5 Restricciones
+
 ​						● Es necesario el uso de conexión a internet a la hora de usar la aplicación.
+
 ​						● Los servidores deben de ser capaces de soportar una gran afluencia de
 ​							información.
+
 ​						● El sistema debe tener un diseño simple, y ser fácil a la hora de usarlo, para
 ​							facilitar su uso.
+
 ​						● La aplicación debe de ser compatible con los principales sistemas operativos:
 ​							Android, IOS, Windows 10 Mobile, Firefox, Mac OS, Linux.
 ​				
 
 ​		2.6 Suposiciones y dependencias
+
 ​						● Es necesario que se cumplan los requisitos mencionados para asegurar un
 ​							correcto uso de la aplicación.
+
 ​						● El sistema GetPizza depende de una conexión a internet estable y confiable.
 ​							Además, se supone que los clientes tienen acceso a un dispositivo compatible
 ​							con el sistema y una cuenta de correo electrónico para registrarse.
@@ -116,6 +139,7 @@ Especificación de requisitos del software (SRS)
 
 
 3. Requerimientos Específicos
+
   3.1 Casos de uso
 
   ​	3.1.1 Registro en el sistema
